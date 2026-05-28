@@ -9,15 +9,15 @@
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		},
 		{
-			nome: 'Thiago',
+			nome: 'Thiago de Oliveira',
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		},
 		{
-			nome: 'Luanna',
+			nome: 'Luanna Kely',
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		},
 		{
-			nome: 'Geany Floro',
+			nome: 'Gheanny Floro',
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		}
 	];
