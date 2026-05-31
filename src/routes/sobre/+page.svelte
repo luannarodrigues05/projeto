@@ -1,15 +1,11 @@
 <script>
 	let participantes = [
 		{
-			nome: 'Matheus Miguel',
-			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
-		},
-		{
 			nome: 'Alex Gabriel',
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		},
 		{
-			nome: 'Thiago de Oliveira',
+			nome: 'Geany Floro',
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		},
 		{
@@ -17,7 +13,11 @@
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		},
 		{
-			nome: 'Gheanny Floro',
+			nome: 'Matheus Miguel',
+			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
+		},
+		{
+			nome: 'Thiago de Oliveira',
 			cor: 'linear-gradient(135deg, #1b0505 0%, #7d1d1d 35%, #a95a28 55%, #2c0e0e 100%)'
 		}
 	];
@@ -27,7 +27,7 @@
 	<div class="page-inner">
 		<header class="hero">
 			<span class="label">DESENVOLVEDORES</span>
-			<h1>Equipe Yu-Gi-Oh</h1>
+			<h1>The Origin of Aether</h1>
 			<p>Os duelistas que colocaram o jogo em campo, reunidos neste deck de talentos.</p>
 		</header>
 
@@ -66,9 +66,8 @@
 		justify-content: center;
 		align-items: center;
 		padding: 18px 14px;
-		background: radial-gradient(circle at top, rgba(170, 40, 35, 0.14), transparent 32%),
-			radial-gradient(circle at center, rgba(240, 170, 90, 0.05), transparent 20%),
-			linear-gradient(180deg, #0f0508 0%, #080205 100%);
+		background: radial-gradient(circle at top, #1e3a5f, transparent 30%),
+			linear-gradient(180deg, #6ecbf5 0%, #f7c948 100%);
 		background-size: cover;
 		background-position: center;
 	}
@@ -78,7 +77,7 @@
 		width: min(860px, 100%);
 		padding: 32px 28px;
 		border-radius: 36px;
-		background: rgba(12, 6, 9, 0.92);
+		background: linear-gradient(135deg, #0b1026, #1a1f4b, #243b6b);
 		border: 1px solid rgba(255, 255, 255, 0.08);
 		box-shadow: 0 35px 90px rgba(0, 0, 0, 0.44);
 		display: flex;
@@ -114,7 +113,7 @@
 	.label {
 		display: inline-flex;
 		margin-bottom: 14px;
-		color: #f5d78e;
+		color: #F8FAFF;
 		letter-spacing: 0.35em;
 		text-transform: uppercase;
 		font-size: 0.78rem;
@@ -123,15 +122,15 @@
 
 	.hero h1 {
 		margin: 0;
-		font-size: clamp(2.75rem, 5vw, 4.25rem);
-		color: #f5d78e;
+		font-size: clamp(2.75rem, 4vw, 4.25rem);
+		color: #FFD700;
 		text-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
 	}
 
 	.hero p {
 		margin: 18px auto 0;
 		max-width: 680px;
-		color: rgba(245, 215, 142, 0.9);
+		color: #F8FAFF;
 		line-height: 1.85;
 		font-size: 1rem;
 	}
@@ -146,7 +145,7 @@
 	.card {
 		position: relative;
 		width: 100%;
-		min-height: 84px;
+		min-height: 60px;
 		padding: 0 24px;
 		border-radius: 24px;
 		display: flex;
@@ -166,12 +165,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(
-			180deg,
-			rgba(255, 255, 255, 0.08),
-			transparent 45%,
-			rgba(0, 0, 0, 0.18)
-		);
+		background: #F8FAFF;
 		pointer-events: none;
 	}
 
@@ -186,8 +180,8 @@
 	.card h2 {
 		position: relative;
 		margin: 0;
-		font-size: clamp(1.9rem, 2.4vw, 2.6rem);
-		color: transparent;
+		font-size: clamp(1.5rem, 1.8vw, 2.6rem);
+		color: rgba(0,0,0,0.7);
 		background: linear-gradient(135deg, #f5d78e, #ffd38a 45%, #f5d78e);
 		-webkit-background-clip: text;
 		background-clip: text;
@@ -201,8 +195,8 @@
 		margin: 36px auto 0;
 		padding: 16px 42px;
 		border-radius: 24px;
-		background: linear-gradient(135deg, #3a0908 0%, #783019 35%, #d2934b 70%, #7e2d12 100%);
-		color: #fde3a4;
+		background: #F8FAFF;
+		color: rgba(0,0,0,0.7);
 		font-size: 1rem;
 		font-weight: 700;
 		text-decoration: none;

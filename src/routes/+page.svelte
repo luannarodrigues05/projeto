@@ -89,6 +89,7 @@
 		padding: 0 24px;
 		border-radius: 22px;
 		font-weight: 800;
+		font-size: 1.2rem;
 		letter-spacing: 0.03em;
 		text-decoration: none;
 		color: rgba(0,0,0,0.7);
