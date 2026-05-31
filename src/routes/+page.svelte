@@ -1,14 +1,12 @@
 <script lang="ts">
-	let tituloDoJogo: string = 'YU-GI-OH';
+	let tituloDoJogo: string = 'The Origin of Aether';
 </script>
 
 <div class="page">
 	<div class="page-box">
-		<span class="label">Bem-vindo</span>
+		<span class="label">Bem-vindo a</span>
 		<h1>{tituloDoJogo}</h1>
-		<p class="subtitle">
-			Escolha o duelo ou conheça a equipe que criou este jogo inspirado no universo dos cards.
-		</p>
+		<p class="subtitle">Descubra a verdade além das nuvens.</p>
 
 		<nav class="menu">
 			<a href="/jogar">Jogar</a>
@@ -25,16 +23,16 @@
 		justify-content: center;
 		align-items: center;
 		padding: 24px 18px;
-		background: radial-gradient(circle at top, rgba(160, 60, 35, 0.16), transparent 30%),
-			linear-gradient(180deg, #0f0508 0%, #080205 100%);
+		background: radial-gradient(circle at top, #1e3a5f, transparent 30%),
+			linear-gradient(180deg, #6ecbf5 0%, #f7c948 100%);
 	}
 
 	.page-box {
 		position: relative;
-		width: min(700px, 100%);
-		padding: 44px 34px;
+		width: min(800px, 100%);
+		padding: 20px 20px;
 		border-radius: 40px;
-		background: rgba(10, 6, 10, 0.95);
+		background: linear-gradient(135deg, #0b1026, #1a1f4b, #243b6b);
 		border: 1px solid rgba(255, 255, 255, 0.08);
 		box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
 		text-align: center;
@@ -51,8 +49,8 @@
 
 	.label {
 		display: inline-flex;
-		margin-bottom: 16px;
-		color: #f5d78e;
+		margin-bottom: 20px;
+		color:  #F8FAFF;
 		letter-spacing: 0.3em;
 		text-transform: uppercase;
 		font-size: 0.78rem;
@@ -62,14 +60,14 @@
 	h1 {
 		margin: 0;
 		font-size: clamp(3rem, 6vw, 4.4rem);
-		color: #f5d78e;
+		color: #FFD700;
 		text-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
 	}
 
 	.subtitle {
-		margin: 18px auto 0;
+		margin: 20px auto 12px;
 		max-width: 560px;
-		color: rgba(245, 215, 142, 0.92);
+		color: #F8FAFF;
 		line-height: 1.88;
 		font-size: 1rem;
 	}
@@ -93,8 +91,8 @@
 		font-weight: 800;
 		letter-spacing: 0.03em;
 		text-decoration: none;
-		color: #fde3a4;
-		background: linear-gradient(135deg, #3d0908 0%, #7d2913 35%, #c9853f 68%, #7a2a12 100%);
+		color: rgba(0,0,0,0.7);
+		background: #F8FAFF;
 		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
 		transition:
 			transform 0.22s ease,
