@@ -98,19 +98,20 @@
 		<div class="jogar-page">
 			<div class="jogar-page-box">
 				<p>
-					Nascido na tranquila vila de Vale Lunaris, o protagonista sempre sonhou em descobrir o que
+					Nascido na tranquila vila de Vale Lunaris, você sempre sonhou em descobrir o que
 					aconteceu com seu pai, um explorador desaparecido nas antigas ruínas da região. Sua única
 					pista era um diário incompleto que mencionava uma misteriosa verdade ligada ao Éter, a
 					energia que sustenta o equilíbrio do mundo. <br /><br /> Quando criaturas pacíficas
-					começam a agir de forma violenta, o jovem ajuda a pesquisadora Dra. Selene, que lhe
-					entrega seu primeiro companheiro, Aethro. Durante sua jornada, ele descobre que os ataques
-					são causados por uma corrupção do Éter e que uma organização conhecida como Ordem do
+					começam a agir de forma violenta, você sai em busca de respostas e encontra sua primeira criatura 
+					que irá se tornar seu fiel companheiro, chamado Aethro. 
+					Durante sua jornada, você descobre que os ataques
+					são causados por um problema no Éter e que uma organização conhecida como Ordem do
 					Eclipse pode estar por trás dos acontecimentos. <br /><br /> Enquanto explora terras
-					distantes, enfrenta desafios e fortalece seus laços com as criaturas, o protagonista reúne
+					distantes, enfrenta desafios e fortalece seus laços com as criaturas, você reúne
 					fragmentos de informações sobre seu pai e sobre a lendária Coroa Celestial, um reino
 					perdido acima das nuvens. Dizem que esse lugar guarda a origem do Éter e as respostas para
-					os mistérios que ameaçam Aetherion. <br /><br /> Agora, sua missão é alcançar a Coroa Celestial
-					antes que a corrupção consuma o mundo, revelando a verdade sobre seu pai e o destino que o
+					os mistérios que ameaçam a existência de todos. <br /><br /> Agora, sua missão é alcançar a Coroa Celestial
+					antes que os inimigos consumam o mundo, revelando a verdade sobre seu pai e o destino que o
 					liga ao equilíbrio de toda a existência.
 				</p>
 			</div>
