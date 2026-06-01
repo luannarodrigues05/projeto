@@ -105,13 +105,13 @@
 					começam a agir de forma violenta, você sai em busca de respostas e encontra sua primeira criatura 
 					que irá se tornar seu fiel companheiro, chamado Aethro. 
 					Durante sua jornada, você descobre que os ataques
-					são causados por um problema no Éter e que uma organização conhecida como Ordem do
+					são causados por uma corrupção no Éter e que uma organização conhecida como Ordem do
 					Eclipse pode estar por trás dos acontecimentos. <br /><br /> Enquanto explora terras
 					distantes, enfrenta desafios e fortalece seus laços com as criaturas, você reúne
 					fragmentos de informações sobre seu pai e sobre a lendária Coroa Celestial, um reino
 					perdido acima das nuvens. Dizem que esse lugar guarda a origem do Éter e as respostas para
 					os mistérios que ameaçam a existência de todos. <br /><br /> Agora, sua missão é alcançar a Coroa Celestial
-					antes que os inimigos consumam o mundo, revelando a verdade sobre seu pai e o destino que o
+					antes que a corrupção consuma o mundo, revelando a verdade sobre seu pai e o destino que o
 					liga ao equilíbrio de toda a existência.
 				</p>
 			</div>
