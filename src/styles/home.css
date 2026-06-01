@@ -1,22 +1,4 @@
-<script lang="ts">
-	let tituloDoJogo: string = 'The Origin of Aether';
-</script>
-
-<div class="page">
-	<div class="page-box">
-		<span class="label">Bem-vindo a</span>
-		<h1>{tituloDoJogo}</h1>
-		<p class="subtitle">Descubra a verdade além das nuvens.</p>
-
-		<nav class="menu">
-			<a href="/jogar">Jogar</a>
-			<a href="/sobre">Sobre</a>
-		</nav>
-	</div>
-</div>
-
-<style>
-	.page {
+.page {
 		min-height: 100vh;
 		width: 100%;
 		display: flex;
@@ -128,4 +110,3 @@
 			padding: 0 18px;
 		}
 	}
-</style>
