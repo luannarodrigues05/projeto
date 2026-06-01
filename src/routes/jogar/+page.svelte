@@ -88,15 +88,15 @@
 	};
 </script>
 
-<div class="content">
+<div class="jogar-content">
 	<!-- HISTÓRIA -->
 
 	{#if jogo.tela == 'historia'}
 		<!-- TODO: RESOLVER GAMBIARRA -->
 		<h1 style="margin-bottom: -80px;">📜 SUA HISTÓRIA 📜</h1>
 
-		<div class="page">
-			<div class="page-box">
+		<div class="jogar-page">
+			<div class="jogar-page-box">
 				<p>
 					Nascido na tranquila vila de Vale Lunaris, o protagonista sempre sonhou em descobrir o que
 					aconteceu com seu pai, um explorador desaparecido nas antigas ruínas da região. Sua única
@@ -126,9 +126,9 @@
 
 		<h2>Escolha seu personagem</h2>
 
-		<div class="cartas">
+		<div class="jogar-cartas">
 			{#each personagens as personagem}
-				<div class="carta">
+				<div class="jogar-carta">
 					<h2>{personagem.emoji}</h2>
 
 					<h3>{personagem.nome}</h3>
@@ -148,111 +148,3 @@
 
 	<!-- FINAL -->
 </div>
-
-<style>
-	body {
-		font-family: Arial;
-		margin: 0;
-	}
-
-	.content {
-		min-height: 100vh;
-		background: radial-gradient(circle at top, #1e3a5f, transparent 30%),
-			linear-gradient(180deg, #6ecbf5 0%, #f7c948 100%);
-		background-repeat: no-repeat;
-		background-size: cover;
-		padding-top: 12px;
-	}
-
-	:global(body) {
-		background: radial-gradient(circle at top, #1e3a5f, transparent 30%),
-			linear-gradient(180deg, #6ecbf5 0%, #f7c948 100%);
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-
-	h1,
-	h2,
-	h3,
-	p {
-		text-align: center;
-		margin: 0;
-	}
-
-	h1 {
-		margin-bottom: 8px;
-		color: #ffd700;
-	}
-
-	/* HISTÓRIA */
-
-	.page {
-		min-height: 100vh;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px 18px;
-		background: transparent;
-	}
-
-	.page-box {
-		position: relative;
-		width: min(800px, 100%);
-		padding: 20px 20px;
-		border-radius: 40px;
-		background: linear-gradient(135deg, #0b1026, #1a1f4b, #243b6b);
-		border: 1px solid rgba(255, 255, 255, 0.08);
-		box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
-		text-align: center;
-		overflow: hidden;
-	}
-
-	button#continue, a#back {
-		margin-top: 30px;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 64px;
-		padding: 0 24px;
-		border-radius: 22px;
-		font-weight: 800;
-		font-size: 1.2rem;
-		letter-spacing: 0.03em;
-		text-decoration: none;
-		color: rgba(0, 0, 0, 0.7);
-		background: #f8faff;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
-		cursor: pointer;
-		transition:
-			transform 0.22s ease,
-			box-shadow 0.22s ease,
-			background 0.22s ease;
-	}
-
-	/*  CARTAS */
-
-	.cartas {
-		display: flex;
-		gap: 20px;
-		justify-content: center;
-		margin-top: 30px;
-		flex-wrap: wrap;
-	}
-
-	.carta {
-		width: 220px;
-		border: 3px solid black;
-		border-radius: 10px;
-		padding: 15px;
-		cursor: pointer;
-		background-color: #0a0648;
-		transition: 0.2s;
-	}
-
-	.carta:hover {
-		transform: scale(1.05);
-		background-color: #d2aeae;
-	}
-</style>
