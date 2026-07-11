@@ -293,8 +293,8 @@
 <main class="container-rpg">
     {#if jogo.tela == "menu"}
         <section class="menu-inicial">
-            <h1>⚔️ RPG POR TURNOS</h1>
-            <h2>Escolha seu Herói</h2>
+            <h1>⚔️ Os reinos estão em colapso. O despertar começou.</h1>
+            <h2>Escolha seu elemento</h2>
 
             <div class="cartas-container">
                 <div style="display:flex;justify-content:flex-start;width:100%;margin-bottom:12px;">
@@ -430,7 +430,7 @@
             <div class="trofeu">🏆</div>
             <h1>PARABÉNS CORAJOSO JOGADOR!</h1>
             <p>Você superou os perigos das 10 fases e conquistou o reino!</p>
-            <button class="botao-reiniciar" on:click={reiniciarJogo}>
+            <button class="botao-reiniciar" on:click={reiniciarJogo} style="margin-top: 1rem;">
                 Jogar Novamente
             </button>
         </section>
@@ -441,7 +441,6 @@
     :global(body) {
         background-color: #121214;
         color: #e1e1e6;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
     }

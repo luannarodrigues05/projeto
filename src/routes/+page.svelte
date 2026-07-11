@@ -1,17 +1,12 @@
 <script lang="ts">
-	import "../styles/home.css"
-	let tituloDoJogo: string = 'The Origin of Aether';
+	import '../styles/home.css';
 </script>
 
-<div class="page">
-	<div class="page-box">
-		<span class="label">Bem-vindo a</span>
-		<h1>{tituloDoJogo}</h1>
-		<p class="subtitle">Descubra a verdade além das nuvens.</p>
+<main id="home-bg">
+	<div class="title-container"></div>
 
-		<nav class="menu">
-			<a href="/jogar">Jogar</a>
-			<a href="/sobre">Sobre</a>
-		</nav>
-	</div>
-</div>
+	<nav class="actions-container">
+		<a href="/jogar" class="action-button">Jogar</a>
+		<a href="/sobre" class="action-button">Sobre</a>
+	</nav>
+</main>
