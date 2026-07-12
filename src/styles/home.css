@@ -1,5 +1,5 @@
 main#home-bg {
-	background: url('/images/background.jpeg') no-repeat center/cover;
+	background: url('/images/background.png') no-repeat center/cover;
 	min-height: 100vh;
 	width: 100vw;
 	display: flex;
@@ -11,20 +11,19 @@ main#home-bg {
 
 .title-container {
 	position: fixed;
-	top: 0;
 	left: 50%;
-	margin-top: -20px;
+	margin-top: -310px;
 	transform: translateX(-50%);
 	background: url('/images/title.png') no-repeat center;
 	background-size: 30% auto;
-	width: 100%;
-	height: 300px;
+	width: 150%;
+	height: 140%;
 	z-index: 10;
 }
 
 .actions-container {
 	position: fixed;
-	bottom: 20px;
+	bottom: 360px;
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
@@ -35,9 +34,9 @@ main#home-bg {
 .actions-container a {
   	font-weight: 700;
 	font-size: 3rem;
-	margin-left: 1rem;
-	margin-right: 1rem;
-	color: #dab901;
+	margin-left:5rem;
+	margin-right: 5rem;
+	color: #030303;
 	text-decoration: none;
 }
 
@@ -76,7 +75,7 @@ main#home-bg {
 }
 
 h1 {
-	margin: 0;
+	margin: 50px 0;
 	font-size: clamp(3rem, 6vw, 4.4rem);
 	color: #FFD700;
 	text-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
