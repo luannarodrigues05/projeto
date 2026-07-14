@@ -14,14 +14,12 @@ body {
 	color: #f5e5d8;
 	margin: 0;
 	padding: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-		'Helvetica Neue', sans-serif;
+	font-family: "Cinzel Decorative", serif;
 	text-align: center;
 }
 
 h1 {
 	font-weight: bold;
-	font-family: verdana;
 }
 
 img.sobre {
