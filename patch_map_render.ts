@@ -1,6 +1,8 @@
-const fs = require('fs');
-const p = 'src/routes/jogar/+page.svelte';
-let t = fs.readFileSync(p, 'utf8');
+import { readFileSync, writeFileSync } from 'node:fs';
+
+const targetPath = 'src/routes/jogar/+page.svelte';
+let content = readFileSync(targetPath, 'utf8');
+
 const oldBlock = `				<table class="mapa-grid">
 					{#each mapa as linha, r}
 						<tr>
@@ -27,19 +29,19 @@ const oldBlock = `				<table class="mapa-grid">
 													
 												{/if}
 											</td>
-									{:else}
-										<td class={"celula tile " + celula} style={estiloTile(celula, r, c)}>
-											{#if celula === 'start'}
-												🏁
-											{:else if celula === 'goal'}
-												🎯
-											{:else if celula === 'challenge'}
-												❗
-											{:else}
-												
+										{:else}
+											<td class={"celula tile " + celula} style={estiloTile(celula, r, c)}>
+												{#if celula === 'start'}
+													🏁
+												{:else if celula === 'goal'}
+													🎯
+												{:else if celula === 'challenge'}
+													❗
+												{:else}
+													
 												{/if}
-										</td>
-									{/if}
+											</td>
+										{/if}
 									{/if}
 								{/if}
 							{/each}
@@ -47,6 +49,7 @@ const oldBlock = `				<table class="mapa-grid">
 					{/each}
 				</table>
 `;
+
 const newBlock = `				<table class="mapa-grid">
 					{#each mapa as linha, r}
 						<tr>
@@ -69,9 +72,7 @@ const newBlock = `				<table class="mapa-grid">
 											🔒
 										{:else if celula === 'obstacle'}
 											⬛
-										{:else}
-											
-											{/if}
+										{/if}
 									</td>
 								{/if}
 							{/each}
@@ -79,9 +80,11 @@ const newBlock = `				<table class="mapa-grid">
 					{/each}
 				</table>
 `;
-if (!t.includes(oldBlock)) {
-  console.error('Old block not found.');
-  process.exit(1);
+
+if (!content.includes(oldBlock)) {
+	console.error('Old block not found.');
+	process.exit(1);
 }
-fs.writeFileSync(p, t.replace(oldBlock, newBlock), 'utf8');
+
+writeFileSync(targetPath, content.replace(oldBlock, newBlock), 'utf8');
 console.log('patched');

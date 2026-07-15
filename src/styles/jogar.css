@@ -6,18 +6,21 @@
 	}
 
 	:global(main.container-rpg) {
-		min-height: 100vh;
+		min-height: 100dvh;
+		overflow: hidden;
 	}
 
 	.container-rpg {
-		max-width: 900px;
-		margin: 40px auto;
+		max-width: none;
+		margin: 0 auto;
 		padding: 0px;
 		text-align: center;
+		min-height: 100dvh;
 	}
 
 	.menu-inicial {
-		min-height: 100vh;
+		min-height: 100dvh;
+		height: 100dvh;
 		width: 100vw;
 		margin-left: calc(50% - 50vw);
 		display: flex;
@@ -26,26 +29,144 @@
 		align-items: center;
 		background-image: url('/images/batalha.png');
 		background-size: cover;
-		background-position: center;
+		background-position: center center;
 		background-repeat: no-repeat;
+		background-attachment: fixed;
 		padding: 2rem;
 		box-sizing: border-box;
+		overflow: hidden;
+		position: relative;
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		image-rendering: auto;
+		isolation: isolate;
+	}
+
+	.menu-inicial::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(5, 4, 10, 0.92), rgba(20, 12, 24, 0.72));
+		z-index: 0;
+	}
+
+	.menu-inicial::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(circle at top left, rgba(255, 187, 40, 0.2), transparent 32%);
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	.menu-content {
+		position: relative;
+		z-index: 1;
+		width: min(1100px, 100%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1rem;
+	}
+
+	.menu-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.8rem;
+		max-width: 780px;
+	}
+
+	.menu-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.55rem 1rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(8px);
+		font-size: 0.95rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #ffe6a3;
+	}
+
+	.menu-header h1 {
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.2rem);
+		line-height: 1.1;
+		text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+	}
+
+	.menu-header h1 span {
+		display: block;
+		margin-top: 0.25rem;
+		color: #ffd36b;
+	}
+
+	.menu-subtitle {
+		margin: 0;
+		font-size: 1.05rem;
+		line-height: 1.6;
+		color: rgba(241, 241, 245, 0.92);
+		max-width: 680px;
+	}
+
+	.menu-info-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(180px, 1fr));
+		gap: 1rem;
+		width: 100%;
+		max-width: 760px;
+		margin-top: 0.3rem;
+	}
+
+	.menu-info-card {
+		background: rgba(255, 255, 255, 0.08);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		border-radius: 16px;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+	}
+
+	.menu-info-card strong {
+		color: #ffd36b;
+		font-size: 1rem;
+	}
+
+	.menu-info-card span {
+		color: #f5f5f7;
+		font-size: 0.92rem;
 	}
 
 	.tela-mapa {
-		min-height: 100vh;
+		min-height: 100dvh;
+		height: 100dvh;
 		width: 100vw;
 		margin-left: calc(50% - 50vw);
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		background-image: url('/images/batalha.png');
 		background-size: cover;
-		background-position: center;
+		background-position: center center;
 		background-repeat: no-repeat;
-		padding: 2rem;
+		background-attachment: fixed;
+		padding: 1rem;
 		box-sizing: border-box;
+		overflow: hidden;
+		position: relative;
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		image-rendering: auto;
 	}
 
 	h1 {
@@ -56,23 +177,41 @@
 
 	.cartas-container {
 		display: flex;
-		gap: 20px;
+		gap: 24px;
 		justify-content: center;
 		flex-wrap: wrap;
-		margin-top: 30px;
+		margin-top: 10px;
 	}
 
 	.carta-heroi {
-		background: #202024;
+		background: linear-gradient(145deg, rgba(32, 32, 36, 0.95), rgba(18, 18, 20, 0.95));
 		border: 3px solid var(--cor-tema);
-		border-radius: 12px;
+		border-radius: 16px;
 		padding: 20px;
 		width: 200px;
 		color: white;
 		cursor: pointer;
+		position: relative;
+		overflow: hidden;
 		transition:
-			transform 0.2s,
-			box-shadow 0.2s;
+			transform 0.2s ease,
+			box-shadow 0.2s ease,
+			border-color 0.2s ease;
+		box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+	}
+
+	.carta-heroi::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.12) 45%, transparent 100%);
+		transform: translateX(-100%);
+		transition: transform 0.35s ease;
+		pointer-events: none;
+	}
+
+	.carta-heroi:hover::before {
+		transform: translateX(100%);
 	}
 
 	.botao-acao {
@@ -122,7 +261,7 @@
 	.botao-voltar-wrapper {
 		display: flex;
 		justify-content: center;
-		margin-top: 24px;
+		margin-top: 18px;
 	}
 	.botao-voltar-batalha {
 		background: rgba(0, 0, 0, 0.45);
@@ -133,8 +272,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 12px;
-		margin-top: 16px;
+		gap: 8px;
+		margin-top: 6px;
 	}
 
 	.titulo-ataques {
@@ -143,14 +282,14 @@
 		color: #f3f3f1;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
-		font-size: 2rem;
+		font-size: 1.25rem;
 	}
 
 	.grupo-ataques {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(140px, 1fr));
-		gap: 10px;
-		width: min(100%, 440px);
+		grid-template-columns: repeat(2, minmax(120px, 1fr));
+		gap: 8px;
+		width: min(100%, 360px);
 	}
 
 	.botao-ataque-opcao {
@@ -158,22 +297,26 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 4px;
-		padding: 12px 10px;
+		gap: 3px;
+		padding: 8px 8px;
 		border-radius: 12px;
 		border: 1px solid rgba(255, 255, 255, 0.12);
-		background: rgba(2, 2, 2, 0.08);
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
 		color: #fff;
 		cursor: pointer;
 		transition:
 			transform 0.15s ease,
-			background 0.15s ease;
-		min-height: 92px;
+			background 0.15s ease,
+			box-shadow 0.15s ease;
+		min-height: 78px;
+		font-size: 0.9rem;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	}
 
 	.botao-ataque-opcao:hover {
 		transform: translateY(-2px);
-		background: rgba(255, 255, 255, 0.16);
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+		box-shadow: 0 12px 22px rgba(0, 0, 0, 0.28);
 	}
 
 	.botao-ataque-opcao:disabled {
@@ -191,6 +334,12 @@
 		gap: 12px;
 		justify-content: center;
 		flex-wrap: wrap;
+		width: 100%;
+	}
+
+	.botao-voltar-batalha {
+		min-width: 120px;
+		text-align: center;
 	}
 
 	.boss-token {
@@ -199,8 +348,8 @@
 	}
 
 	.carta-heroi:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 8px 20px var(--cor-tema);
+		transform: translateY(-8px) scale(1.02);
+		box-shadow: 0 16px 28px color-mix(in srgb, var(--cor-tema) 35%, black);
 	}
 
 	.emoji-avatar {
@@ -326,9 +475,9 @@
 		align-items: center;
 		justify-content: space-between;
 		background: #202024;
-		padding: 25px;
+		padding: 14px 16px;
 		border-radius: 15px;
-		margin-bottom: 30px;
+		margin-bottom: 10px;
 		border: 1px solid #323238;
 	}
 
@@ -390,32 +539,58 @@
 	}
 
 	.caixa-mensagem {
-		background: #29292e;
-		padding: 12px;
-		border-radius: 8px;
-		margin-bottom: 20px;
+		background: linear-gradient(135deg, rgba(41, 41, 46, 0.95), rgba(17, 17, 19, 0.95));
+		padding: 12px 14px;
+		border-radius: 14px;
+		margin-bottom: 10px;
 		font-weight: bold;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+	}
+
+	.caixa-mensagem p {
+		margin: 0 0 8px;
+		color: #ffe7a3;
 	}
 
 	.arena-combate {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		margin: 30px 0;
+		margin: 8px 0 12px;
+		gap: 14px;
 	}
 
 	.card-combate {
-		background: #202024;
-		padding: 20px;
-		border-radius: 12px;
-		width: 220px;
+		background: linear-gradient(145deg, rgba(32, 32, 36, 0.96), rgba(18, 18, 20, 0.96));
+		padding: 16px;
+		border-radius: 16px;
+		width: min(240px, 38vw);
 		border: 2px solid #323238;
+		box-sizing: border-box;
+		box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+		position: relative;
+		overflow: hidden;
 	}
 
 	.card-combate.adversario {
 		border-color: #ff4d4d;
 		position: relative;
 		overflow: hidden;
+	}
+
+	.card-combate::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.08) 45%, transparent 100%);
+		transform: translateX(-100%);
+		transition: transform 0.4s ease;
+		pointer-events: none;
+	}
+
+	.card-combate:hover::before {
+		transform: translateX(100%);
 	}
 	.card-combate.atingido {
 		animation: impacto-inimigo 0.28s ease-in-out;
@@ -556,6 +731,7 @@
 		font-weight: bold;
 		color: #fad014;
 		font-style: italic;
+		text-shadow: 0 0 12px rgba(250, 208, 20, 0.35);
 	}
 
 	@keyframes impacto-inimigo {
@@ -653,16 +829,23 @@
 
 	.conteudo-batalha {
 		display: flex;
-		gap: 24px;
+		gap: 16px;
 		align-items: flex-start;
 		justify-content: center;
 		width: 100%;
 		max-width: 1200px;
+		flex: 1;
+		min-height: 0;
+		overflow: hidden;
+		flex-wrap: wrap;
 	}
 
 	.conteudo-principal {
 		flex: 1;
 		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
 	}
 
 	.tela-loja {
@@ -670,14 +853,86 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		padding: 24px;
-		gap: 12px;
-		width: 320px;
+		padding: 12px;
+		gap: 8px;
+		width: 280px;
 		flex-shrink: 0;
 		background: rgba(23, 23, 24, 0.92);
 		border: 1px solid rgba(255, 255, 255, 0.12);
 		border-radius: 16px;
 		box-shadow: 0 10px 25px rgba(243, 236, 236, 0.959);
+		max-height: calc(100dvh - 2rem);
+		overflow: hidden;
+		align-self: flex-start;
+	}
+
+	@media (max-width: 960px) {
+		.menu-info-grid {
+			grid-template-columns: 1fr;
+			max-width: 420px;
+		}
+
+		.menu-header h1 {
+			font-size: clamp(1.7rem, 5vw, 2.5rem);
+		}
+
+		.menu-subtitle {
+			font-size: 0.98rem;
+		}
+		.conteudo-batalha {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.tela-loja {
+			width: min(100%, 420px);
+			max-height: none;
+			align-self: center;
+		}
+
+		.grupo-botoes-secundarios {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.botao-voltar-batalha {
+			width: min(100%, 240px);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.menu-inicial {
+			padding: 1rem;
+		}
+
+		.menu-content {
+			gap: 0.8rem;
+		}
+
+		.menu-badge {
+			font-size: 0.8rem;
+			padding: 0.45rem 0.8rem;
+		}
+
+		.cartas-container {
+			gap: 14px;
+		}
+
+		.carta-heroi {
+			width: min(100%, 220px);
+		}
+		.arena-combate {
+			flex-direction: column;
+		}
+
+		.card-combate {
+			width: min(100%, 260px);
+		}
+
+		.grupo-ataques {
+			grid-template-columns: 1fr;
+			width: min(100%, 280px);
+		}
 	}
 	.tela-loja h2 {
 		margin: 6px 0 4px;
@@ -685,20 +940,21 @@
 	.itens-loja {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 8px;
 		width: 100%;
-		margin-top: 12px;
+		margin-top: 8px;
 	}
 	.item-loja {
 		background: rgba(255, 255, 255, 0.05);
 		border: 1px solid rgba(255, 255, 255, 0.08);
-		padding: 16px;
+		padding: 10px;
 		border-radius: 12px;
 		text-align: center;
 		color: #eaeaea;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		font-size: 0.9rem;
 	}
 	.item-loja h3 {
 		margin: 0 0 6px;
@@ -725,6 +981,44 @@
 	.hud-mapa {
 		width: 100%;
 		max-width: 900px;
+		margin-bottom: 10px;
+	}
+
+	.hud-painel {
+		display: flex;
+		gap: 12px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.hud-item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 10px 14px;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.08);
+		backdrop-filter: blur(8px);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+	}
+
+	.hud-item strong {
+		display: block;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #ffe7a3;
+	}
+
+	.hud-item p {
+		margin: 2px 0 0;
+		font-size: 0.95rem;
+		color: #f5f5f7;
+	}
+
+	.hud-icone {
+		font-size: 1.1rem;
 	}
 	#story-screen {
 		position: fixed;

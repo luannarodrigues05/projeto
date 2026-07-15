@@ -273,10 +273,10 @@
 		efeitoAtaque = elemento;
 		const danoInimigo = Math.max(
 			Math.round(
-				jogo.personagemSelecionado.ataque * (1.05 + ataque.multiplicador * 0.1) -
-					jogo.inimigoAtual.defesa * 0.7
+				(jogo.personagemSelecionado.ataque * (0.9 + ataque.multiplicador * 0.08) -
+					jogo.inimigoAtual.defesa * 0.55) * 0.95
 			),
-			4
+			5
 		);
 		jogo.inimigoAtual.vida -= danoInimigo;
 		jogo.inimigoAtual.vida = Math.max(0, jogo.inimigoAtual.vida);
@@ -293,8 +293,8 @@
 
 		if (jogo.inimigoAtual.vida <= 0) {
 			const recompensa = Math.max(
-				12,
-				Math.round(jogo.fase * 3 + jogo.inimigoAtual.vidaMaxima / 14)
+				10,
+				Math.round(jogo.fase * 4 + jogo.inimigoAtual.vidaMaxima / 18)
 			);
 			if (typeof jogo.personagemSelecionado.pontos === 'number') {
 				jogo.personagemSelecionado.pontos += recompensa;
@@ -312,7 +312,7 @@
 		}
 
 		const danoHeroi = Math.max(
-			Math.round(jogo.inimigoAtual.ataque * 0.95 - jogo.personagemSelecionado.defesa * 0.7),
+			Math.round((jogo.inimigoAtual.ataque * 0.85 - jogo.personagemSelecionado.defesa * 0.6) * 0.95),
 			4
 		);
 		jogo.personagemSelecionado.vida -= danoHeroi;
@@ -377,14 +377,36 @@
 
 	{#if jogo.tela == 'menu'}
 		<section class="menu-inicial">
-			<h1>
-				Os reinos estão em colapso.
-				<p></p>
-				O despertar começou.
-			</h1>
-			<h2>Escolha seu elemento</h2>
+			<div class="menu-content">
+				<div class="menu-header">
+					<div class="menu-badge">⚔️ Reino de Helium • Aventura épica</div>
+					<h1>
+						Os reinos estão em colapso.
+						<span>O despertar começou.</span>
+					</h1>
+					<p class="menu-subtitle">
+						Escolha um elemento, domine os combates e enfrente os chefes que ameaçam o mundo.
+					</p>
+				</div>
 
-			<div class="cartas-container">
+				<div class="menu-info-grid">
+					<div class="menu-info-card">
+						<strong>4 elementos</strong>
+						<span>Fogo, Água, Terra e Ar</span>
+					</div>
+					<div class="menu-info-card">
+						<strong>10 fases</strong>
+						<span>Do iniciante ao confronto final</span>
+					</div>
+					<div class="menu-info-card">
+						<strong>Loja fixa</strong>
+						<span>Use moedas para fortalecer seu herói</span>
+					</div>
+				</div>
+
+				<h2>Escolha seu elemento</h2>
+
+				<div class="cartas-container">
 				{#each personagens as personagem}
 					<button
 						class="carta-heroi"
@@ -411,19 +433,39 @@
 					</button>
 				{/each}
 			</div>
-			<div class="botao-voltar-wrapper">
-				<button class="botao-voltar botao-acao" on:click={voltarTela}>Voltar</button>
+				<div class="botao-voltar-wrapper">
+					<button class="botao-voltar botao-acao" on:click={voltarTela}>Voltar</button>
+				</div>
 			</div>
 		</section>
 	{/if}
 
 	{#if jogo.tela == 'mapa' && jogo.personagemSelecionado && jogo.inimigoAtual}
 		<section class="tela-mapa">
-			<div
-				class="hud-mapa"
-				style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"
-			>
-				<div>🏅 Moedas: <strong>{jogo.personagemSelecionado.pontos || 0}</strong></div>
+			<div class="hud-mapa">
+				<div class="hud-painel">
+					<div class="hud-item">
+						<span class="hud-icone">🏅</span>
+						<div>
+							<strong>Moedas</strong>
+							<p>{jogo.personagemSelecionado.pontos || 0}</p>
+						</div>
+					</div>
+					<div class="hud-item">
+						<span class="hud-icone">🛡️</span>
+						<div>
+							<strong>Fase</strong>
+							<p>{jogo.fase}/10</p>
+						</div>
+					</div>
+					<div class="hud-item">
+						<span class="hud-icone">⚔️</span>
+						<div>
+							<strong>Inimigo</strong>
+							<p>{jogo.inimigoAtual?.nome}</p>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="conteudo-batalha">
 				<div class="conteudo-principal">
