@@ -91,16 +91,16 @@
 	];
 
 	let listaInimigosCompleta: Inimigo[] = [
-		{ nome: 'Slime Verde', vida: 48, vidaMaxima: 48, ataque: 10, defesa: 3, emoji: '🟢' },
-		{ nome: 'Goblin Saqueador', vida: 70, vidaMaxima: 70, ataque: 14, defesa: 5, emoji: '👹' },
-		{ nome: 'Esqueleto Guerreiro', vida: 88, vidaMaxima: 88, ataque: 16, defesa: 7, emoji: '💀' },
-		{ nome: 'Orco Enfurecido', vida: 105, vidaMaxima: 105, ataque: 18, defesa: 9, emoji: '🐗' },
-		{ nome: 'Dragão Filhote (Chefe)', vida: 140, vidaMaxima: 140, ataque: 24, defesa: 10, emoji: '🐲', chefe: true},
+		{ nome: 'Árvore sombria', vida: 48, vidaMaxima: 48, ataque: 10, defesa: 3, emoji: '🪾' },
+		{ nome: 'Monstro de lava', vida: 70, vidaMaxima: 70, ataque: 14, defesa: 5, emoji: '👹' },
+		{ nome: 'Esqueleto de pedra', vida: 88, vidaMaxima: 88, ataque: 16, defesa: 7, emoji: '💀' },
+		{ nome: 'Tornado devastardor (chefe)', vida: 105, vidaMaxima: 105, ataque: 18, defesa: 9, emoji: '🌪️' },
+		{ nome: 'Dragão (Chefe)', vida: 140, vidaMaxima: 140, ataque: 24, defesa: 10, emoji: '🐲', chefe: true},
 		{ nome: 'Feiticeira das Sombras', vida: 118, vidaMaxima: 118, ataque: 21, defesa: 9, emoji: '🧙‍♀️'},
-		{ nome: 'Servo de Cristal', vida: 125, vidaMaxima: 125, ataque: 20, defesa: 10, emoji: '🔷' },
+		{ nome: 'Tsunami', vida: 125, vidaMaxima: 125, ataque: 20, defesa: 10, emoji: '🌊' },
 		{ nome: 'Harpia do Vento', vida: 132, vidaMaxima: 132, ataque: 21, defesa: 10, emoji: '🐦' },
 		{ nome: 'Guardião Flamejante', vida: 145, vidaMaxima: 145, ataque: 23, defesa: 11, emoji: '🔥'},
-		{ nome: 'Rei das Ruínas (Chefe)', vida: 158, vidaMaxima: 158, ataque: 25, defesa: 12, emoji: '👑', chefe: true}
+		{ nome: 'Rei das Ruínas (Chefe)', vida: 158, vidaMaxima: 160, ataque: 25, defesa: 12, emoji: '👑', chefe: true}
 	];
 
 	type ItemLoja = { id: string; nome: string; descricao: string; custo: number };
@@ -184,11 +184,12 @@
 		'Poder Especial': 0,
 		'Golpe Elemental': 0
 	};
-	let ataquesDisponiveis: Ataque[] = [
-		{ nome: 'Soco', emoji: '👊', multiplicador: 1.0, descricao: 'Ataque direto e estável' },
-		{ nome: 'Chute', emoji: '🥊', multiplicador: 1.12, descricao: 'Golpe mais forte' },
-		{ nome: 'Poder Especial', emoji: '✨', multiplicador: 1.35, descricao: 'Ataque devastador' },
-		{ nome: 'Golpe Elemental', emoji: '⚡', multiplicador: 1.2, descricao: 'Ataque com poder do elemento' }
+	let ataquesDisponiveis: Array<Ataque | { nome: string; emoji: string; multiplicador: number; descricao: string; tipo: 'ataque' | 'defesa' }> = [
+		{ nome: 'Soco', emoji: '👊', multiplicador: 1.0, descricao: 'Ataque direto e estável', tipo: 'ataque' },
+		{ nome: 'Chute', emoji: '🥊', multiplicador: 1.12, descricao: 'Golpe mais forte', tipo: 'ataque' },
+		{ nome: 'Poder Especial', emoji: '✨', multiplicador: 1.35, descricao: 'Ataque devastador', tipo: 'ataque' },
+		{ nome: 'Golpe Elemental', emoji: '⚡', multiplicador: 1.2, descricao: 'Ataque com poder do elemento', tipo: 'ataque' },
+		{ nome: 'Defesa', emoji: '🛡️', multiplicador: 0, descricao: 'Reduz o dano do próximo golpe', tipo: 'defesa' }
 	];
 
 	function ataqueEspecialAtingiuLimite(ataqueNome: string): boolean {
@@ -198,7 +199,8 @@
 
 	function restanteAtaqueEspecial(ataqueNome: string): number {
 		if (ataqueNome !== 'Poder Especial' && ataqueNome !== 'Golpe Elemental') return 0;
-		return LIMITE_ATAQUES_ESPECIAIS - (usosAtaquesEspeciais[ataqueNome] ?? 0);
+		const usosAtual = usosAtaquesEspeciais[ataqueNome] ?? 0;
+		return Math.max(0, LIMITE_ATAQUES_ESPECIAIS - usosAtual);
 	}
 
 	function escolherPersonagem(personagem: Personagem) {
@@ -248,13 +250,47 @@
 		goto('/');
 	}
 
+	let mostrarConfirmacaoSaida = false;
+
+    function abrirConfirmacaoSaida() {
+        mostrarConfirmacaoSaida = true;
+    }
+
+    function cancelarSaidaBatalha() {
+        mostrarConfirmacaoSaida = false;
+    }
+
+    function confirmarSaidaBatalha() {
+        mostrarConfirmacaoSaida = false;
+
+        jogo = {
+            personagemSelecionado: null,
+            inimigoAtual: null,
+            fase: 1,
+            mensagem: '',
+            tela: 'menu'
+        };
+
+        pilhaTelas = ['historia'];
+        logEventos = [];
+        usosAtaquesEspeciais = {
+            'Poder Especial': 0,
+            'Golpe Elemental': 0
+        };
+        heroiSofreDano = false;
+        inimigoSofreDano = false;
+        efeitoAtaque = '';
+        danoCausado = 0;
+        danoRecebido = 0;
+    }
+	
 	function atacar(tipoAtaque: string = 'Soco') {
 		if (!jogo.personagemSelecionado || !jogo.inimigoAtual) return;
 
 		const ataque =
 			ataquesDisponiveis.find((item) => item.nome === tipoAtaque) ?? ataquesDisponiveis[0];
 
-		if (ataqueEspecialAtingiuLimite(ataque.nome)) {
+		if (ataque.tipo === 'ataque' && ataqueEspecialAtingiuLimite(ataque.nome)) {
 			jogo.mensagem = `${ataque.nome} já foi usado ${LIMITE_ATAQUES_ESPECIAIS} vezes nesta partida.`;
 			return;
 		}
@@ -266,14 +302,44 @@
 			};
 		}
 
+		if (ataque.nome === 'Defesa') {
+			jogo.mensagem = `${jogo.personagemSelecionado.nome} entrou em defesa!`;
+			logEventos = [
+				`${jogo.personagemSelecionado.nome} assumiu uma postura defensiva.`,
+				...logEventos.slice(0, 2)
+			];
+			const danoHeroi = Math.max(
+				Math.round((jogo.inimigoAtual.ataque * 0.4 - jogo.personagemSelecionado.defesa * 0.3) * 0.95),
+				1
+			);
+			jogo.personagemSelecionado.vida -= danoHeroi;
+			danoRecebido = danoHeroi;
+			heroiSofreDano = true;
+			setTimeout(() => (heroiSofreDano = false), 300);
+			setTimeout(() => (danoRecebido = 0), 350);
+			if (jogo.personagemSelecionado.vida <= 0) {
+				alert('🎯 GAME OVER! Seu herói caiu em combate.');
+				reiniciarJogo();
+			}
+			return;
+		}
+
 		const elemento = jogo.personagemSelecionado.elemento
 			.toLowerCase()
 			.normalize('NFD')
 			.replace(/\p{Diacritic}/gu, '');
 		efeitoAtaque = elemento;
+
+		const multiplicadorAtaque =
+			ataque.nome === 'Poder Especial'
+				? 1.7
+				: ataque.nome === 'Golpe Elemental'
+					? 1.55
+					: ataque.multiplicador;
+
 		const danoInimigo = Math.max(
 			Math.round(
-				(jogo.personagemSelecionado.ataque * (0.9 + ataque.multiplicador * 0.08) -
+				(jogo.personagemSelecionado.ataque * (0.9 + multiplicadorAtaque * 0.08) -
 					jogo.inimigoAtual.defesa * 0.55) * 0.95
 			),
 			5
@@ -325,7 +391,6 @@
 		setTimeout(() => (heroiSofreDano = false), 300);
 		setTimeout(() => (danoRecebido = 0), 350);
 
-		// Jogador derrotado
 		if (jogo.personagemSelecionado.vida <= 0) {
 			alert('🎯 GAME OVER! Seu herói caiu em combate.');
 			reiniciarJogo();
@@ -379,21 +444,15 @@
 		<section class="menu-inicial">
 			<div class="menu-content">
 				<div class="menu-header">
-					<div class="menu-badge">⚔️ Reino de Helium • Aventura épica</div>
+				
 					<h1>
-						Os reinos estão em colapso.
-						<span>O despertar começou.</span>
+						Os reinos estão em colapso
+
 					</h1>
 					<p class="menu-subtitle">
-						Escolha um elemento, domine os combates e enfrente os chefes que ameaçam o mundo.
+						Domine os combates e enfrente os chefes que ameaçam o mundo
 					</p>
-				</div>
-
-				<div class="menu-info-grid">
-					<div class="menu-info-card">
-						<strong>4 elementos</strong>
-						<span>Fogo, Água, Terra e Ar</span>
-					</div>
+		
 					<div class="menu-info-card">
 						<strong>10 fases</strong>
 						<span>Do iniciante ao confronto final</span>
@@ -558,18 +617,18 @@
 									<span class="emoji-ataque">{ataque.emoji}</span>
 									<strong>{ataque.nome}</strong>
 									<small>{ataque.descricao}</small>
-									{#if ataque.nome === 'Poder Especial' || ataque.nome === 'Golpe Elemental'}
+									{#if ataque.tipo === 'ataque' && (ataque.nome === 'Poder Especial' || ataque.nome === 'Golpe Elemental')}
 										<small>
 											{ataqueEspecialAtingiuLimite(ataque.nome)
 												? 'Limite atingido'
-												: `${restanteAtaqueEspecial(ataque.nome)} restante(s)`}
+												: `${restanteAtaqueEspecial(ataque.nome)} restante${restanteAtaqueEspecial(ataque.nome) === 1 ? '' : 's'}`}
 										</small>
 									{/if}
 								</button>
 							{/each}
 						</div>
 						<div class="grupo-botoes-secundarios">
-							<button class="botao-voltar-batalha botao-acao" on:click={voltarTela}>Voltar</button>
+							<button class="botao-voltar-batalha botao-acao" on:click={abrirConfirmacaoSaida}>Voltar</button>
 							<button class="botao-voltar-batalha botao-acao" on:click={irParaHome}>Home</button>
 						</div>
 					</div>
@@ -595,6 +654,18 @@
 				{/if}
 			</div>
 		</section>
+	{/if}
+
+	{#if mostrarConfirmacaoSaida}
+		<div class="confirmacao-saida-overlay" role="dialog" aria-modal="true" aria-labelledby="confirmar-saida-titulo">
+			<div class="confirmacao-saida-card">
+				<p id="confirmar-saida-titulo">Tem certeza que deseja abandonar a batalha?</p>
+				<div class="confirmacao-saida-acoes">
+					<button class="botao-acao" on:click={confirmarSaidaBatalha}>Sim</button>
+					<button class="botao-acao" on:click={cancelarSaidaBatalha}>Não</button>
+				</div>
+			</div>
+		</div>
 	{/if}
 
 	{#if jogo.tela == 'fim'}

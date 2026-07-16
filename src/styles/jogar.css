@@ -268,28 +268,72 @@
 		padding: 12px 24px;
 	}
 
+	.confirmacao-saida-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+    }
+
+    .confirmacao-saida-card {
+        background: #1f1b2e;
+        border: 2px solid #ffd166;
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        max-width: 90%;
+    }
+
+    .confirmacao-saida-card p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .confirmacao-saida-acoes {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .confirmacao-saida-acoes button {
+        min-width: 90px;
+    }
+
 	.acoes-batalha {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 8px;
 		margin-top: 6px;
+		background: rgba(10, 10, 10, 0.82);
+		border: 1px solid rgba(212, 175, 55, 0.45);
+		border-radius: 12px;
+		padding: 10px 12px;
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+		max-width: 720px;
+		margin-inline: auto;
 	}
 
 	.titulo-ataques {
 		margin: 0;
 		font-weight: 700;
-		color: #f3f3f1;
+		color: #d4af37;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
 		font-size: 1.25rem;
 	}
 
 	.grupo-ataques {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(120px, 1fr));
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 8px;
-		width: min(100%, 360px);
+		width: min(100%, 720px);
 	}
 
 	.botao-ataque-opcao {
@@ -338,8 +382,22 @@
 	}
 
 	.botao-voltar-batalha {
+		display: inline-block;
 		min-width: 120px;
 		text-align: center;
+		padding: 10px 20px;
+		background: #5a2828;
+		color: white;
+		text-decoration: none;
+		border-radius: 5px;
+		transition: background 0.3s;
+		font-family: 'Cinzel Decorative', serif;
+		font-size: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	.botao-voltar-batalha:hover {
+		background: #7d1d1d;
 	}
 
 	.boss-token {
@@ -982,6 +1040,11 @@
 		width: 100%;
 		max-width: 900px;
 		margin-bottom: 10px;
+		position: sticky;
+		top: 0.75rem;
+		z-index: 30;
+		display: flex;
+		justify-content: center;
 	}
 
 	.hud-painel {
@@ -989,6 +1052,7 @@
 		gap: 12px;
 		flex-wrap: wrap;
 		justify-content: center;
+		align-items: center;
 	}
 
 	.hud-item {

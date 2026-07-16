@@ -1,5 +1,5 @@
 main#home-bg {
-	background: url('/images/background.png') no-repeat center/cover;
+	background: url('/images/background.jpeg') no-repeat center/cover;
 	min-height: 100vh;
 	width: 100vw;
 	display: flex;
