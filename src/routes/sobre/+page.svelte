@@ -1,9 +1,9 @@
 <script lang="ts">
     const desenvolvedores: string[] = [
-        'Alex Gabriel',
+        'Alex Gabriel de Lima Maciel',
         'Geany Floro',
-        'Luanna Kely',
-        'Matheus Miguel',
+        'Luanna Kely Rodrigues Marques de Lima',
+        'Matheus Miguel de Almeida Andrade',
         'Thiago de Oliveira'
     ];
 </script>
