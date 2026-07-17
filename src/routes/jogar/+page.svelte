@@ -283,6 +283,21 @@
         danoCausado = 0;
         danoRecebido = 0;
     }
+
+	let mostrarConfirmacaoHome = false;
+
+	function abrirConfirmacaoHome() {
+		mostrarConfirmacaoHome = true;
+	}
+
+	function cancelarHome() {
+		mostrarConfirmacaoHome = false;
+	}
+
+	function confirmarHome() {
+		mostrarConfirmacaoHome = false;
+		goto('/');
+	}
 	
 	function atacar(tipoAtaque: string = 'Soco') {
 		if (!jogo.personagemSelecionado || !jogo.inimigoAtual) return;
@@ -493,7 +508,7 @@
 				{/each}
 			</div>
 				<div class="botao-voltar-wrapper">
-					<button class="botao-voltar botao-acao" on:click={voltarTela}>Voltar</button>
+					<button class="botao-voltar botao-acao" on:click={() => { jogo.tela = 'historia'; }}>Voltar</button>
 				</div>
 			</div>
 		</section>
@@ -629,7 +644,7 @@
 						</div>
 						<div class="grupo-botoes-secundarios">
 							<button class="botao-voltar-batalha botao-acao" on:click={abrirConfirmacaoSaida}>Voltar</button>
-							<button class="botao-voltar-batalha botao-acao" on:click={irParaHome}>Home</button>
+							<button class="botao-voltar-batalha botao-acao" on:click={abrirConfirmacaoHome}>Home</button>
 						</div>
 					</div>
 				</div>
@@ -668,6 +683,18 @@
 		</div>
 	{/if}
 
+	{#if mostrarConfirmacaoHome}
+		<div class="confirmacao-saida-overlay" role="dialog" aria-modal="true" aria-labelledby="confirmar-home-titulo">
+			<div class="confirmacao-saida-card">
+				<p id="confirmar-home-titulo">Tem certeza que deseja ir para a home?</p>
+				<div class="confirmacao-saida-acoes">
+					<button class="botao-acao" on:click={confirmarHome}>Sim</button>
+					<button class="botao-acao" on:click={cancelarHome}>Não</button>
+				</div>
+			</div>
+		</div>
+	{/if}
+
 	{#if jogo.tela == 'fim'}
 		<section class="tela-final">
 			<div class="trofeu">🏆</div>
@@ -680,7 +707,3 @@
 	{/if}
 </main>
 
-<style>
-	@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
-	@import '../../styles/jogar.css';
-</style>

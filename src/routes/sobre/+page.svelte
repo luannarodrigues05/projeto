@@ -1,7 +1,7 @@
 <script lang="ts">
     const desenvolvedores: string[] = [
         'Alex Gabriel de Lima Maciel',
-        'Geany Floro',
+        'Geany Floro de Santana',
         'Luanna Kely Rodrigues Marques de Lima',
         'Matheus Miguel de Almeida Andrade',
         'Thiago de Oliveira'
